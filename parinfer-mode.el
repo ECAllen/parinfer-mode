@@ -2,7 +2,9 @@
 
 (defun parinfer-mode-insert-result (result)
   (if (and (plist-get result :success)
-           (not (and (= (char-before (point)) 10)
+            (not (and (char-before (point))
+                    (char-after (point))
+                    (= (char-before (point)) 10)
                      (= (char-after (point)) 41))))
       (let ((old-buffer (current-buffer))
             (old-point (point)))
